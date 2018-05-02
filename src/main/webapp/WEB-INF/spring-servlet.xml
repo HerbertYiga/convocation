@@ -1,0 +1,104 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+         ">   
+
+<context:component-scan base-package="com.convocation.controllers" />
+<context:annotation-config></context:annotation-config>
+   <mvc:resources mapping="/resources/**" location="/resources/"/>
+      <mvc:resources mapping="/resources/image/**" location="/resources/image/"/>
+
+
+    <mvc:annotation-driven />
+    
+    
+         <bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+     <!-- setting maximum upload size -->
+    <property name="maxUploadSize" value="200000000" />
+    </bean>
+    
+    
+     <bean id="viewResolver1" class="org.springframework.web.servlet.view.XmlViewResolver">
+        <property name="order" value="1"/>
+        <property name="location" value="/WEB-INF/views.xml"/>
+    </bean>
+    
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+<property name="prefix" value="/WEB-INF/jsp/"></property>  
+<property name="suffix" value=".jsp"></property>  
+</bean>  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  <!--Email api-->
+  
+  
+     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="herbertyiga24@gmail.com"/>
+        <property name="password" value="onlylord" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+  
+  <!--database configuration-->
+  
+<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>  
+<property name="url" value="jdbc:mysql://localhost/convocation"></property>  
+<property name="username" value="root"></property>  
+<property name="password" value="onlylord"></property>  
+</bean>  
+  
+  
+
+<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">  
+<property name="dataSource" ref="ds"></property>  
+
+</bean>
+
+
+
+
+
+  <bean id="dao" class="com.convocation.dao.StudentsFormDao">  
+<property name="template" ref="jt"></property>  
+</bean>
+
+  
+  
+  
+  <bean id="userdao" class="com.convocation.dao.UserDao">  
+<property name="template" ref="jt"></property>  
+</bean>
+   
+	
+	
+	  
+  <bean id="mdao" class="com.convocation.dao.MessagesDao">  
+<property name="template" ref="jt"></property>  
+</bean>
+  
+</beans>  
