@@ -3,7 +3,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+     <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -141,7 +141,8 @@ return false;
           <div class="form-group">
             <label class="col-lg-2 control-label" for="otherName">Authority</label>
             <div class="col-lg-10">
-<form:select path="authority" class="form-control">
+               <form:select path="authority" class="form-control">
+                <option value="" disabled selected>SELECT AUTHORITY</option>
                 <form:option value="ROLE_ADMIN">ROLE_ADMIN</form:option>
                 <form:option value="ROLE_USER">ROLE_USER</form:option>
               
@@ -161,22 +162,15 @@ return false;
      
         </div>
 
-        <div class="form-group">
-            <label class="col-lg-2 control-label" for="otherName">Password</label>
-            <div class="col-lg-10">
-            <form:input path="password" class="form-control" placeholder="Course Studied" type="password"/>
-            <form:errors path="password" cssStyle="color: #ff0000;" />
-             </div>
      
-        </div>
         
    <br>  
    
         <div class="form-group">
-            <label class="col-lg-2 control-label" for="otherName">Confirm Password</label>
+            <label class="col-lg-2 control-label" for="otherName">Email</label>
             <div class="col-lg-10">
-            <form:input path="password2" class="form-control" placeholder="Course Studied" type="password"/>
-            <form:errors path="password2" cssStyle="color: #ff0000;" />
+            <form:input path="email" class="form-control" placeholder="email" type="email"/>
+            <form:errors path="email" cssStyle="color: #ff0000;" />
             <h5 style="color: #ff0000;"> ${error}</h5>
              </div>
      
@@ -186,9 +180,8 @@ return false;
   
    
       <div class="form-group">
-            <label class="col-lg-2 control-label" for="otherName">Enable</label>
             <div class="col-lg-10">
-            <form:input path="enable" class="form-control" placeholder="true/false" type="text"/>
+            <form:input path="enable" class="form-control" placeholder="true/false" type="hidden" value="1"/>
             <form:errors path="enable" cssStyle="color: #ff0000;" />
              </div>
      

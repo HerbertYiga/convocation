@@ -71,7 +71,7 @@
         <!--<li class="nav-header"></li>-->
         <li><a href="#"><i class="glyphicon glyphicon-home""></i> Home</a></li>
    
-            <li><a href="<c:url value="/headingsViewByStudent" />"><i class="glyphicon glyphicon-book"></i> Messages <span class="badge badge-info">4</span></a></li>
+            <li><a href="<c:url value="/headingsViewByStudent" />"><i class="glyphicon glyphicon-book"></i> Messages </a></li>
            
     </ul>
     

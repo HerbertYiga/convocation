@@ -29,12 +29,25 @@
       </button>
                 <a class="navbar-brand" href="#" style="color:#1E90FF;">Kyambogo Old Students Registration System</a>
     </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-      
-        <li><a href="<c:url value="/logout" />">Log out</a></li>
-      </ul>
-    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active" ><a href="<c:url value="/StudentForm"/>" class="" style="color:#1E90FF;">Home</a></li>
+
+                        <li class="active"><a href="<c:url value="/StudentForm"/>" class="" style="color:#1E90FF;">Add Details</a></li>
+
+                         <li class="active"><a href="<c:url value="/FormerStudentDetailsView"/>" class="" style="color:#1E90FF;">View Details</a></li>
+                        
+                        <li class="active"><a href="<c:url value="/sendEmailView"/>" class="" style="color:#1E90FF;">send Email</a></li>
+                        
+                        <li class="active"><a href="<c:url value="/downloadExcel"/>" class="" style="color:#1E90FF;">Download Excel</a></li>
+                        
+
+                        
+                        </ul>
+                    <ul class="nav navbar-nav pull-right">
+                                                <li class=""><a href="<c:url value="/logout" />">Logout</a></li>
+                    </ul>
+                </div>
   </div><!-- /container -->
 </div>
 <!-- /Header -->
@@ -44,26 +57,8 @@
   
   <!-- upper section -->
   <div class="row">
-	<div class="col-sm-2">
-      <!-- left -->
-       <a href="<c:url value="/StudentForm"/>" target=""><i class="glyphicon glyphicon-home"></i> Home</a></h3> 
-      <hr>
-      
-      <ul class="nav nav-stacked">
-        
-            
-      
-     <li><a href="<c:url value="/StudentForm"/>" target=""><i class="glyphicon glyphicon-plus"></i> Add Details</a></li>
-        <li><a href="<c:url value="/FormerStudentDetailsView"/>" target=""><i class="glyphicon glyphicon-book"></i> View Details</a></li>
-         <li><a href="<c:url value="/sendEmailView"/>" target=""><i class="glyphicon glyphicon-envelope"></i> Send Email</a></li>
-       <li><a href="<c:url value="/downloadExcel"/>" target=""><i class="glyphicon glyphicon-download"></i>Down load Excel</a></li>
-     
-      </ul>
-      
-      <hr>
-      
-  	</div><!-- /span-3 -->
-    <div class="col-sm-9">
+	<!-- /span-3 -->
+    <div class="col-sm-12">
       	
       <!-- column 2 -->	
      
@@ -93,7 +88,7 @@
                     <!-- -List of all former students-->
                   <form:form id="yourForm" action="deleteslectedstudents" method="POST" commandName="studentsForm" >    
                      
-                       <input type="submit" value="delete all students" />
+                    
                        <br><br>
                      
                      
@@ -101,7 +96,6 @@
                   <thead>
                     <tr>
                    
-                        <th class="hidden-xs">ID</th>
                         <th>Full Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
@@ -111,14 +105,14 @@
                         <th>Image</th>
                        
                  
-                        <th>Edit/DELETE</th>
+                        <th>Edit</th>
                     </tr> 
                   </thead>
                   <tbody id="myTable">
                <c:forEach var="formerstudent" items="${list}"> 
                           <tr>
                          
-                            <td class="hidden-xs">${formerstudent.id}</td>
+                          
                             <td>${formerstudent.fullName}</td>
                             <td>${formerstudent.email}</td>
                             <td>${formerstudent.phoneNumber}</td>
@@ -128,12 +122,11 @@
                             <td>
                     <form:checkbox path="checkid"  value="${formerstudent.id}"/>
                 </td>
-                        <td width="90px"><img width="100" src="<c:url value='/resources/image/${formerstudent.imageLink}'/>" alt="Photo of Youthful William" id="pic" />
+                        <td width="90px"><img width="50"  height="50" src="<c:url value='/resources/image/${formerstudent.imageLink}'/>" alt="Photo of Youthful William" id="pic" />
          </td>
                              <td align="center">
-                              <a class="btn btn-default" href=""><em class="fa fa-pencil"></em></a>
-                              <a class="btn btn-danger" href="deleteformerstudent/${formerstudent.id}"><em class="glyphicon glyphicon-trash"></em></a>
-                            </td>
+                              <a class="btn btn-primary" href=""><em class="fa fa-pencil"></em>Edit</a>
+                              </td>
                           </tr>
                              </c:forEach>
                           

@@ -22,6 +22,7 @@ import com.convocation.bean.StudentsForm;
 
 
 
+
 public class StudentsFormDao {
 	// jdbc template  declaration
 	
@@ -58,12 +59,15 @@ public class StudentsFormDao {
 				studentsForm.setFullName(rs.getString("fullName"));
 			
 				studentsForm.setEmail(rs.getString("email"));
+				studentsForm.setUsername(rs.getString("username"));
+				studentsForm.setPassword1(rs.getString("password1"));
 				studentsForm.setCourseStudied(rs.getString("courseStudied"));
 			
 				studentsForm.setPhoneNumber(rs.getInt("phoneNumber"));
 				
 				studentsForm.setImageLink(rs.getString("imageLink"));
 				studentsForm.setRegNo(rs.getString("regNo"));
+				
 				return studentsForm;
 			}
 			
@@ -123,15 +127,19 @@ public class StudentsFormDao {
 	
 	
 public List<StudentsForm> getStudentbyIdInAlist(int id){
-		
+	
 		return template.query("select * from studentdetails where id='" + id +"'",new RowMapper<StudentsForm>(){
 
-			public StudentsForm mapRow(ResultSet rs, int row)
+	    public StudentsForm mapRow(ResultSet rs, int row)
 					throws SQLException {
+	    	
 				
 				StudentsForm studentsForm=new StudentsForm();
+				
 				studentsForm.setId(rs.getInt("id"));
+				
 				studentsForm.setFullName(rs.getString("fullName"));
+				
 				studentsForm.setEmail(rs.getString("email"));
 			
 		

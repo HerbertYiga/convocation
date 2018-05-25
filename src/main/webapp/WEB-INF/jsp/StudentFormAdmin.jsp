@@ -103,7 +103,7 @@ return false;
   <div class="row">
 	<div class="col-sm-3">
       <!-- left -->
-       <a href="<c:url value="/admin"/>" target=""><i class="glyphicon glyphicon-home"></i>Home</a></h3>
+       <a href="<c:url value="/admin"/>" target=""><i class="glyphicon glyphicon-home"></i> Home</a></h3>
       <hr>
       
       <ul class="nav nav-stacked">
@@ -135,13 +135,22 @@ return false;
                   <div class="panel-body">
                     
                     <!-- -Form    -->
-         <form:form id=""  action="adminsaveStudentDetailsCon"   method="POST" enctype="multipart/form-data" class="form-horizontal" commandName="studentsForm">
+          <form:form id=""  action="adminsaveStudentDetailsCon"   method="POST" enctype="multipart/form-data" class="form-horizontal" commandName="studentsForm">
         <fieldset>
+         <div class="form-group">
+            <label class="col-lg-2 control-label" for="firstName">User Name</label>
+            <div class="col-lg-10">
+            <form:input path="username" class="form-control" placeholder="Enter User Name" id="one" type="text"/>
+          <form:errors path="username" cssStyle="color: #ff0000;" />
+            </div>
+          
+        </div>
+          <br>
         <div class="form-group">
             <label class="col-lg-2 control-label" for="firstName">FullName</label>
             <div class="col-lg-10">
-            <form:input path="fullName" class="form-control" placeholder="Full Name" id="one" type="text"/>
-         <form:errors path="fullName" cssStyle="color: #ff0000;" />
+            <form:input path="fullName" class="form-control" placeholder="Enter Full Name" id="one" type="text"/>
+          <form:errors path="fullName" cssStyle="color: #ff0000;" />
             </div>
           
         </div>
@@ -150,7 +159,7 @@ return false;
         <div class="form-group">
             <label class="col-lg-2 control-label" for="otherName">Course Studied</label>
             <div class="col-lg-10">
-            <form:input path="courseStudied" class="form-control" placeholder="Course Studied" type="username"/>
+            <form:input path="courseStudied" class="form-control" placeholder="Enter Course Studied" type="text"/>
             <form:errors path="courseStudied" cssStyle="color: #ff0000;" />
              </div>
      
@@ -163,8 +172,11 @@ return false;
       <div class="form-group">
             <label class="col-lg-2 control-label" for="otherName">Reg No</label>
             <div class="col-lg-10">
-            <form:input path="regNo" class="form-control" placeholder="Reg No" type="username"/>
+            <form:input path="regNo" class="form-control" placeholder="Enter Reg No" type="username"/>
             <form:errors path="regNo" cssStyle="color: #ff0000;" />
+            
+            <h5 style="color: #ff0000;"> ${error}</h5>
+           
              </div>
      
         </div>
@@ -173,7 +185,7 @@ return false;
         <div class="form-group">
             <label class="col-lg-2 control-label" for="email">Email</label>
             <div class="col-lg-10">
-            <form:input path="email" class="form-control" placeholder="Email" type="text"/>
+            <form:input path="email" class="form-control" placeholder="Enter Email" type="email"/>
              <form:errors path="email" cssStyle="color: #ff0000;" />
            </div>
              
@@ -187,14 +199,14 @@ return false;
 
 
 
-
-
-   <br>  
+  
         <div class="form-group">
             <label class="col-lg-2 control-label" for="email">Phone Number</label>
             <div class="col-lg-10">
-            <form:input path="phoneNumber" class="form-control" placeholder="Reg No" type="text"/>
+            <form:input path="phoneNumber" class="form-control" placeholder="Enter phone Number" type="text"/>
              <form:errors path="phoneNumber" cssStyle="color: #ff0000;" />
+             
+             
            </div>
              
           
@@ -203,7 +215,25 @@ return false;
         </div>
 
 
-
+ <div class="form-group">
+            <label class="col-lg-2 control-label" for="firstName">Password</label>
+            <div class="col-lg-10">
+            <form:input path="password1" class="form-control" placeholder="Enter password" id="one" type="password"/>
+          <form:errors path="password1" cssStyle="color: #ff0000;" />
+            </div>
+          
+        </div>
+         <div class="form-group">
+            <label class="col-lg-2 control-label" for="firstName">ConfirmPassword</label>
+            <div class="col-lg-10">
+            <form:input path="password2" class="form-control" placeholder="Confirm password" id="one" type="password"/>
+          <form:errors path="password2" cssStyle="color: #ff0000;" />
+         
+          <h5 style="color: #ff0000;">${passordcheck}</h5>
+             
+            </div>
+          
+        </div>
 
 
 <br>
@@ -228,16 +258,17 @@ return false;
     
 
         <div class="modal-footer">
-            <button class="btn btn-primary" type="submit"  onClick="return Checkfiles()">Submit</button>
-            <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button> 
+            <button class="btn btn-primary" type="submit"  onClick="return Checkfiles()" style="color:orange;">Submit</button>
+            <button class="btn btn-default" data-dismiss="modal" type="reset">Reset</button> 
+       
         </div><!-- end modal-footer -->
         </fieldset>
     </form:form>
         
-        
+     
+  
         
   
-
         
         
         

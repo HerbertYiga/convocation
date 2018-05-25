@@ -59,9 +59,10 @@
         <!--<li class="nav-header"></li>-->
         <li><a href="<c:url value="/admin" />"><i class="glyphicon glyphicon-home""></i> Home</a></li>
           <li><a href="<c:url value="/sendMessagesViewByAdmin" />"><i class="glyphicon glyphicon-send""></i> send message</a></li>
-         <li><a href=""><i class="glyphicon glyphicon-text""></i> Feed Back<span class="badge badge-info">4</span></a></li>
-         <li><a href="<c:url value="/headingsView" />"> Sent Messages</a></li>
-         
+       
+             <li><a href=""><i class="glyphicon glyphicon-book""></i> Sent Messages</a></li>
+      
+              
        
     </ul>
 </div><!-- /span-3 -->
@@ -111,30 +112,9 @@
      
         </div>
         
-       
-             
-          
-             
-             
+ <br> 
     
-        
-
-   <br>  
-
-
-
-
-
-   
-
-
-
-
-
-
-    
-
-        <div class="modal-footer">
+      <div class="modal-footer">
             <button class="btn btn-primary" type="submit"  >Send</button>
             <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button> 
         </div><!-- end modal-footer -->

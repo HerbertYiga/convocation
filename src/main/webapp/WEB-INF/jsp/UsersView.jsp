@@ -21,28 +21,49 @@
 
 
 <script>
-function disableBtn1() {
-    document.getElementById("myBtn1").disabled = true;
-}
-function disableBtn2() {
-    document.getElementById("myBtn2").disabled = true;
-}
 
 
 
+function disablefirstbutton() {
 
-function undisableBtn1() {
-    document.getElementById("myBtn1").disabled = false;
+    document.getElementById("firstbutton").disabled = true;
+
+    document.getElementById("secondbutton").disabled = false;
+
 }
 
+ 
 
+function disablesecondbutton() {
 
+    document.getElementById("secondbutton").disabled = true;
 
+    document.getElementById("firstbutton").disabled = false;
 
-function undisableBtn2() {
-    document.getElementById("myBtn2").disabled = false;
 }
+
+
+
+
 </script>
+
+
+<style>
+
+
+
+
+a[disabled=disabled] {
+  color: black;
+  font-weight: bold;
+}
+
+
+</style>
+
+
+
+
 
 <!-- Script for validating that an image is captured -->
 
@@ -78,10 +99,10 @@ function undisableBtn2() {
 
     <ul class="nav nav-pills nav-stacked" style="border-right:1px solid black">
         <!--<li class="nav-header"></li>-->
-        <li><a href="<c:url value="/admin"/>"><i class="glyphicon glyphicon-home""></i> Home</a></li>
-        <li><a href="<c:url value="/UsersView"/>"><i class="glyphicon glyphicon-user"></i>Enable/Disable</a></li>
-        <li><a href="<c:url value="/DeleteUserDetails"/>"><i class="glyphicon glyphicon-edit"></i>Edit/Delete</a></li>
-           <li><a href="<c:url value="/editUserPassword"/>"><i class="glyphicon glyphicon-user"></i>Change Password</a></li>
+        <li><a href="<c:url value="/admin"/>"><i class="glyphicon glyphicon-home""></i>  Home</a></li>
+        <li><a href="<c:url value="/UsersView"/>"><i class="glyphicon glyphicon-user"></i> Enable/Disable</a></li>
+        <li><a href="<c:url value="/DeleteUserDetails"/>"><i class="glyphicon glyphicon-edit"></i> Edit/Delete</a></li>
+           <li><a href="<c:url value="/editUserPassword"/>"><i class="glyphicon glyphicon-user"></i> Change Password</a></li>
        
     </ul>
 </div><!-- /span-3 -->
@@ -105,13 +126,12 @@ function undisableBtn2() {
                   <thead>
                     <tr>
                    
-                        <th class="hidden-xs">ID</th>
                         <th>Name</th>
                         <th>Password</th>
                         <th>Authority</th>
                         <th>Phone Number </th>
                       
-                         <th style="color:#1E90FF">Enable/Disable </th>
+                         <th style="color:#1E90FF">Enable</th>
                          <th style="color:#1E90FF">Disable </th>
                  
                     </tr> 
@@ -119,8 +139,7 @@ function undisableBtn2() {
                   <tbody id="myTable">
                <c:forEach var="userdetails" items="${list}"> 
                           <tr>
-                         
-                            <td class="hidden-xs">${userdetails.userId}</td>
+                     
                             <td>${userdetails.username}</td>
                             <td>${userdetails.password}</td>
                             <td>${userdetails.authority}</td>
@@ -128,20 +147,21 @@ function undisableBtn2() {
                                 
                           
                           
-                          <td>
-                       <button onclick="disableBtn1();undisableBtn2()" id="myBtn1">Enable </button>   
-                  </td><td> <button onclick="undisableBtn1();disableBtn2()" id="myBtn2">Disable</button> 
                          
- 
+                             <td>
+                       <a  href="<c:url value="/enableuser/${userdetails.userId}"/>" class="btn btn-success" onclick="disablefirstbutton()" >Enable </a>   
+                  
                           </td>
+                          
+                                <td>
+                       <a  href="<c:url value="/disableuser/${userdetails.userId}"/>" class="btn btn-danger"  onclick="disablesecondbutton()">Disable </a>   
+                  
+                          </td>
+                      
+             
                          
                   
              
-                       <td align="center">
-                
-         
-                            
-                            </td>
                           </tr>
                              </c:forEach>
                           

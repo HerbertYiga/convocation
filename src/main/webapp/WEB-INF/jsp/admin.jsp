@@ -75,9 +75,9 @@
                 <div class="panel-heading">
        
                     <h3 class="panel-title">
-                        <span class=""><h5 style="color: #ff0000;">${saveusermessage}</h3></span> </h5>
-                        <span class=""><h5 style="color: #ff0000;">${noticesubmitted}</h3></span> </h5>
-                       <span class=""><h5 style="color: #ff0000;">${messagesent}</h3></span> </h5>
+                        <span class=""><h3 style="color: #32CD32;">${saveusermessage}</h3></span> 
+                        <span class=""><h3 style="color: #32CD32">${noticesubmitted}</h3></span> </h5>
+                       <span class=""><h5 style="color:#32CD32">${messagesent}</h3></span> </h5>
                        
                         
                         
@@ -93,8 +93,7 @@
                        
                         </div>
                         <div class="col-xs-6 col-md-6">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Chat</a>
-                          <a href="<c:url value="/noticeBoard"/>" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>Notice Board</a>
+                          <a href="<c:url value="/noticeBoard"/>" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Notice Board</a>
                           <a href="<c:url value="/sendMessagesViewByAdmin"/>" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> <br/>Messages</a>
                        
                        

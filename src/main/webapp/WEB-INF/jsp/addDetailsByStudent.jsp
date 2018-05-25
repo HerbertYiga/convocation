@@ -290,7 +290,7 @@ return false;
 
 
 <br><br><br>
-<footer class="text-center">All rights Reserved&nbsp;&nbsp;<a href="<c:url value="/login"/>"><strong>Login </strong></a><a href=""><strong>Kyambogo Convocation </strong></a></footer>
+<footer class="text-center">All rights Reserved&nbsp;&nbsp;<a href="<c:url value="/login"/>"><strong>Kyambogo Convocation</strong></a></a></footer>
 
 
 <!-- /.modal -->

@@ -3,6 +3,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
      <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -103,7 +104,7 @@ return false;
   <div class="row">
 	<div class="col-sm-3">
       <!-- left -->
-       <a href="<c:url value="/admin"/>" target=""><i class="glyphicon glyphicon-flash"></i>Home</a></h3>     <hr>
+       <a href="<c:url value="/admin"/>" target=""><i class="glyphicon glyphicon-home"></i> Home</a></h3>     <hr>
       
       <ul class="nav nav-stacked">
        
@@ -127,7 +128,27 @@ return false;
          	<div class="col-md-12">
 			  
               <hr>
+              <!--  Table -->
               
+              <table class="table table-striped table-bordered table-list">
+                  
+                  <tbody id="myTable">
+                  
+               <c:forEach  items="${list}" var="details"> 
+                          <tr>
+                          
+                         <td><c:out value="${details.email}" /><td>
+                      
+                           
+                            
+                            
+            
+                                </tr>
+                             </c:forEach>
+                          
+                        </tbody>
+                </table>
+  
               <div class="panel panel-default" >
                   <div class="panel-heading">  <h4 style="text-align:center"><b>Send Email</b></h4></div>
                   <div class="panel-body">
@@ -137,8 +158,9 @@ return false;
         <fieldset>
         <div class="form-group">
             <label class="col-lg-2 control-label" for="firstName">To</label>
+  
             <div class="col-lg-10">
-            <form:input path="recepient" class="form-control" placeholder="Enter Email" id="one" type="email" value=""/>
+            <form:input path="recepient" class="form-control" placeholder="Emails" id="one" type="email" value=""/>
          <form:errors path="recepient" cssStyle="color: #ff0000;" />
             </div>
           
@@ -199,15 +221,6 @@ return false;
         
         
         
-                        <c:forEach var="formerstudent" items="${list}"> 
-                         <tr>
-                         
-                         <td>${formerstudent.email}</td>
-                         
-                          </tr>
-                     
-                           </c:forEach>
-                          
 
         
         

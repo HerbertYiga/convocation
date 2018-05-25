@@ -56,11 +56,11 @@
 
     <ul class="nav nav-pills nav-stacked" style="border-right:1px solid black">
         <!--<li class="nav-header"></li>-->
-        <li><a href="<c:url value="/admin"/>"><i class="glyphicon glyphicon-home""></i> Home</a></li>
-        <li><a href="<c:url value="/UsersView"/>"><i class="glyphicon glyphicon-user"></i>Enable/Disable</a></li>
+        <li><a href="<c:url value="/admin"/>"><i class="glyphicon glyphicon-home""></i>  Home</a></li>
+        <li><a href="<c:url value="/UsersView"/>"><i class="glyphicon glyphicon-user"></i> Enable/Disable</a></li>
       
-       <li><a href="<c:url value="/DeleteUserDetails"/>"><i class="glyphicon glyphicon-edit"></i>Edit/Delete</a></li>
-           <li><a href="<c:url value="/editUserPassword"/>"><i class="glyphicon glyphicon-user"></i>Change Password</a></li>
+       <li><a href="<c:url value="/DeleteUserDetails"/>"><i class="glyphicon glyphicon-edit"></i> Edit/Delete</a></li>
+           <li><a href="<c:url value="/editUserPassword"/>"><i class="glyphicon glyphicon-user"></i> Change Password</a></li>
        
     </ul>
 </div><!-- /span-3 -->
@@ -84,7 +84,7 @@
                   <thead>
                     <tr>
                    
-                        <th class="hidden-xs">ID</th>
+                   
                         <th>Name</th>
                         <th>Password</th>
                         <th>Authority</th>
@@ -99,7 +99,7 @@
                <c:forEach var="userdetails" items="${list}"> 
                           <tr>
                          
-                            <td class="hidden-xs">${userdetails.userId}</td>
+                         
                             <td>${userdetails.username}</td>
                             <td>${userdetails.password}</td>
                             <td>${userdetails.authority}</td>

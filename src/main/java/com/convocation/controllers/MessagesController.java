@@ -2,9 +2,12 @@ package com.convocation.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,10 +32,10 @@ public class MessagesController {
 	
 	@RequestMapping("sendMessagesViewByAdmin")
 	
-	public ModelAndView sendMessagesViewByAdmin(@ModelAttribute("messagesbean") MessagesBean messagesbean){
+	public String sendMessagesViewByAdmin(@ModelAttribute("messagesbean") MessagesBean messagesbean){
 		
 		
-	return new ModelAndView("sendMessagesViewByAdmin");
+	return "sendMessagesViewByAdmin";
 		
 	}
 	
@@ -40,11 +43,14 @@ public class MessagesController {
 	
 	@RequestMapping("saveMessagesByAdmin")
 	
-	public ModelAndView saveMessagesByAdmin(@ModelAttribute("messagesbean") MessagesBean messagesbean,Model model){
+	public String saveMessagesByAdmin(@Valid @ModelAttribute("messagesbean") MessagesBean messagesbean,BindingResult bindingResult,Model model){
 	
-		mdao.saveMessageAndHeading(messagesbean);
+
+		
+		
+    mdao.saveMessageAndHeading(messagesbean);
 	model.addAttribute("messagesent","Message sent successfully........");
-	return new ModelAndView("admin");
+	return "admin";
 		
 	}
 	
@@ -124,7 +130,9 @@ public class MessagesController {
 	
 	@RequestMapping("saveNoticesByAdmin")
 	
-	public ModelAndView saveNoticesByAdmin(@ModelAttribute("messagesbean") MessagesBean messagesbean,Model model){
+	public ModelAndView saveNoticesByAdmin(@Valid @ModelAttribute("messagesbean") MessagesBean messagesbean,BindingResult bindingResult,Model model){
+		
+	
 	
 	mdao.saveNotices(messagesbean);
 	model.addAttribute("messagesent","Notice  sent successfully........");

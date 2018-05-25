@@ -29,6 +29,40 @@ public class UserContoller {
 	@Autowired
 	UserDao userdao;
 	
+	//Enabling the user
+	
+	
+	@RequestMapping(value="/enableuser/{userId}",method=RequestMethod.GET)
+	
+	public ModelAndView enableUsers(@PathVariable int userId,@ModelAttribute("edituser") User edituser,Model model){
+		
+		userdao.enableUser(userId);
+		
+		
+		return new ModelAndView("redirect:/UsersView");
+	 
+		
+	
+	}
+	
+	//Disable users
+	
+	
+	@RequestMapping(value="/disableuser/{userId}",method=RequestMethod.GET)
+	
+	public ModelAndView DiableUsers(@PathVariable int userId,@ModelAttribute("edituser") User edituser,Model model){
+		
+	userdao.disableUser(userId);
+	
+	
+		return new ModelAndView("redirect:/UsersView");
+	}
+	
+	
+	
+	
+	
+	
 	//page for adding the user
 	@RequestMapping("adduser")
 	public ModelAndView addUser(@ModelAttribute("adduser") User adduser){
@@ -52,23 +86,17 @@ public class UserContoller {
 	public ModelAndView addUser(@Valid @ModelAttribute("adduser") User userdetails,BindingResult bindingresult,Model model){
 		
 		
-		if(bindingresult.hasErrors()){
-			
-			return new ModelAndView("addUser");
-		}
-		//checking whether the passwords are no equal
-		if(!(userdetails.getPassword().equals(userdetails.getPassword2()))){
-			
-			model.addAttribute("error","Make sure the passwords correspond!!");
-			return new ModelAndView("addUser");
-		}
+	    //generating the password automatically
 		
+		int len=4;
+		String password=userdao.randomString(len);
+		//putting the  password into a setter method
+		userdetails.setPassword(password);
 		//saving the user details to the database
 		userdao.saveFormerStudentDetails(userdetails);
 		//model for returning message for successful installation
-		model.addAttribute("saveusermessage","user details submitted successfully........");
 		
-		return new ModelAndView("admin");
+		return new ModelAndView("redirect:/DeleteUserDetails");
 	}
 	
 	

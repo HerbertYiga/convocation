@@ -1,5 +1,7 @@
 package com.convocation.bean;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class MessagesBean {
 	
 	
@@ -7,17 +9,20 @@ public class MessagesBean {
 	
 	private int headingId;
 	
-	
+	@NotEmpty(message="please insert the message Heading")
 	private String  theHeading;
 	
 	
 	private int messageBodyId;
 	
-	
+	@NotEmpty(message="please insert body text")
 	private String messageBody;
 	
 	private int noticeId;
+	
+	@NotEmpty(message="please insert heading text")
 	private String noticeHeading;
+	@NotEmpty(message="please insert body text")
 	private String  noticeBody;
 	
 	

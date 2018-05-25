@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,6 +21,11 @@ import com.convocation.bean.User;
 public class UserDao {
 
 	
+	//constants for generating a random number
+		public static final String DATA="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		
+		public static Random random=new Random();
+	
 	
 	// jdbc template  declaration
 	
@@ -28,9 +34,56 @@ public class UserDao {
 	//setter method for the jdbc template
 	
 	
+	
+	
+	
+	
 	public void setTemplate(JdbcTemplate template){
 		this.template=template;
 	}
+	
+	
+	//enabling the users
+	public int enableUser(int userId){
+			
+	String sql=	"update users set enable=1 WHERE userId=" + userId +"";
+	
+	return template.update(sql);
+		
+	}
+    //disabling the users
+	public int disableUser(int userId){
+		
+	String sql=	"update users set enable=0 WHERE userId=" + userId +"";
+	
+	return template.update(sql);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	//random method for generating the password
+	public  String randomString(int len){
+		StringBuilder built=new StringBuilder(len);
+		for(int i=0;i<len;i++){
+			
+	   built.append(DATA.charAt(random.nextInt(DATA.length())));
+			
+			
+			
+		}
+		//returning a string 
+		return built.toString();
+		
+		
+		
+	}
+	
+	
 	
 	
 	

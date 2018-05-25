@@ -176,8 +176,6 @@ public class StudentsFormController {
 @RequestMapping(value="/saveStudentDetailsbyStudents")
 	public ModelAndView saveStudentDetailsByStuden(HttpServletRequest servletRequest,@Valid @ModelAttribute("addstudentdetailsbyuser") StudentsForm studentsForm,BindingResult result,Model model){
 
-		//Handling the errors using the binding result
-	    
 	
 		
 		

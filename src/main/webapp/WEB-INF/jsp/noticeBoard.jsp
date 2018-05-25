@@ -58,9 +58,9 @@
     <ul class="nav nav-pills nav-stacked" style="border-right:1px solid black">
         <!--<li class="nav-header"></li>-->
         <li><a href="<c:url value="/admin" />"><i class="glyphicon glyphicon-home""></i> Home</a></li>
-          <li><a href="<c:url value="/noticeBoard" />"><i class="glyphicon glyphicon-send""></i> Notice Board</a></li>
+          <li><a href="<c:url value="/noticeBoard" />"><i class="glyphicon glyphicon-book""></i> Notice Board</a></li>
        
-         <li><a href="<c:url value="/noticesView" />"> <i class="glyphicon glyphicon-book""></i> Sent Notices</a></li>
+         <li><a href="<c:url value="/noticesView" />"> <i class="glyphicon glyphicon-send""></i> Sent Notices</a></li>
          
        
     </ul>

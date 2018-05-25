@@ -145,10 +145,13 @@ public class AdminControllerForUserViews {
 	
 	//Email send form view 
 	
-		@RequestMapping("sendEmailFormAdmin")
-		public ModelAndView  viewSendEmailView(Model model,Model model2,StudentsForm studentform){
+		@RequestMapping(value="sendEmailFormAdmin/{id}",method=RequestMethod.GET)
+		public ModelAndView  viewSendEmailView(Model model,Model model2,StudentsForm studentform,@PathVariable int id){
 			
-			StudentsForm studentsform2=new StudentsForm();
+			
+		    //adding the  students form details  to the form 
+			
+            StudentsForm studentsform2=new StudentsForm();
 			model.addAttribute("studentsform2",studentsform2);
 			
 			StudentsForm studentsemail=dao.getStudentById(studentform.getId());
@@ -234,19 +237,26 @@ public class AdminControllerForUserViews {
 	}
 	
 
-	
-	
-	
-	
-	
-	
 	//deleting the selected users from the database
 	
 	@RequestMapping("admindeleteslectedstudents")
-	public String deleteSelectedStudents(StudentsForm studentsform){
+	public String deleteSelectedStudents(StudentsForm studentsform,Model model){
+		
+		if(studentsform.getCheckid()==null){
+			model.addAttribute("selectcheckbox","please make sure you have selected a check box");
+			
+			model.addAttribute("FormerStudentDetailsViewAdmin");
+			
+			return "";
+			
+			
+		}
 		
 		//capture info in the array
 		int [] userid=studentsform.getCheckid();
+		
+		
+		
 		
 		
 		  //using a for loop
@@ -280,20 +290,41 @@ public class AdminControllerForUserViews {
 		int [] userid=studentsform.getCheckid();
 		
 		
-		  //using a for loop
+		
+		  //putting the ids in a for loop
+		
+			 //out puting the inserted ids from the for loop
+			
+				
+		//getting the elements into a list
+		List<StudentsForm> list=dao.getStudentDetails();
+		
+	
+		
+			 
+		//adding the list to a model
 		
 		
-		for(int id:userid){
-			//using setter method
+		model.addAttribute("list",list);
 		
-			System.out.println(id);
+		
+		
+		
+		
+		model2.addAttribute("sendemailform",new StudentsForm());
+
+		  
+		 
+		
 			
 		
-			List<StudentsForm> list=dao.getStudentbyIdInAlist(id);
-			model.addAttribute("list",list);
-			model2.addAttribute("sendemailform",new StudentsForm());
 			
-		}
+		
+	
+			
+			
+		
+		
 		
 		
 		
@@ -376,7 +407,7 @@ public class AdminControllerForUserViews {
 	//method for viewing the former student details
 	@RequestMapping("FormerStudentDetailsViewAdmin")
 	public ModelAndView viewFormerStudenrDetails(Model model){
-		
+		     
 		model.addAttribute("studentsForm",new StudentsForm());
 		List <StudentsForm>list=dao.getStudentDetails();
 		
@@ -408,6 +439,10 @@ public class AdminControllerForUserViews {
 			
 			return new ModelAndView("sendEmailViewAdmin","list",list);
 		}
+		
+		
+		
+		
 		
 		//Calling the former students Edit view  
 		

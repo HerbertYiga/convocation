@@ -8,10 +8,16 @@ public class User {
 	
 	@NotEmpty(message="please insert password")
 	private String password;
-	@NotEmpty(message="please insert user name")
+	@NotEmpty(message="please insert your user name")
 	
 	
 	private String username;
+	@NotEmpty(message="please insert your full Names")
+	private String fullName;
+	@NotEmpty(message="please insert your email")
+	
+	private String email;
+	
 	
 	
 	private String authority;
@@ -87,6 +93,21 @@ public class User {
 	}
 	public void setPassword2(String password2) {
 		this.password2 = password2;
+	}
+	//full Name
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+	
+	//email
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 

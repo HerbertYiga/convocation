@@ -3,7 +3,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+        <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,12 +29,26 @@
       </button>
    <a class="navbar-brand" href="#" style="color:#1E90FF;">Kyambogo Old Students Registration System</a>
     </div>
-    <div class="navbar-collapse collapse">
-       <ul class="nav navbar-nav navbar-right">
-      
-        <li><a href="<c:url value="/logout" />">Log out</a></li>
-      </ul>
-    </div>
+   <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                    
+                        <li class="active" ><a href="<c:url value="/admin"/>" class="" style="color:#1E90FF;">Home</a></li>
+                       
+                        <li class="active"><a href="<c:url value="/StudentFormAdmin"/>" class="" style="color:#1E90FF;">Add Details</a></li>
+                        
+                         <li class="active"><a href="<c:url value="/FormerStudentDetailsViewAdmin"/>" class="" style="color:#1E90FF;">View Details</a></li>
+                        
+                         <li class="active"><a href="<c:url value="/sendEmailViewAdmin"/>" class="" style="color:#1E90FF;">send Email</a></li>
+                        
+                        <li class="active"><a href="<c:url value="/admindownloadExcel"/>" class="" style="color:#1E90FF;">Download Excel</a></li>
+                        
+
+                        
+                        </ul>
+                    <ul class="nav navbar-nav pull-right">
+                                                <li class=""><a href="<c:url value="/logout" />">Logout</a></li>
+                    </ul>
+                </div>
   </div><!-- /container -->
 </div>
 <!-- /Header -->
@@ -44,24 +58,8 @@
   
   <!-- upper section -->
   <div class="row">
-	<div class="col-sm-2">
-      <!-- left -->
-       <a href="<c:url value="/admin"/>" target=""><i class="glyphicon glyphicon-home"></i>Home</a></h3> 
-      <hr>
-      
-      <ul class="nav nav-stacked">
-           
-  <li><a href="<c:url value="/StudentFormAdmin"/>" target=""><i class="glyphicon glyphicon-plus"></i> Add Details</a></li>
-        <li><a href="<c:url value="/FormerStudentDetailsViewAdmin"/>" target=""><i class="glyphicon glyphicon-book"></i> View Details</a></li>
-         <li><a href="<c:url value="/sendEmailViewAdmin"/>" target=""><i class="glyphicon glyphicon-envelope"></i> Send Email</a></li>
-       <li><a href="<c:url value="/admindownloadExcel"/>" target=""><i class="glyphicon glyphicon-download"></i>Down load Excel</a></li>
-   
-      </ul>
-      
-      <hr>
-      
-  	</div><!-- /span-3 -->
-    <div class="col-sm-9">
+<!-- /span-3 -->
+    <div class="col-sm-12">
       	
       <!-- column 2 -->	
      
@@ -116,26 +114,30 @@
                           <tr>
                          
                             <td class="hidden-xs">${formerstudent.id}</td>
+                            
                             <td>${formerstudent.fullName}</td>
+                            
                             <td>${formerstudent.email}</td>
+                            
+                            
                             <td>${formerstudent.phoneNumber}</td>
+                            
                             <td>${formerstudent.courseStudied}</td>
-                                 <td>${formerstudent.regNo}</td>
+                            
+                             <td>${formerstudent.regNo}</td>
                                       <td>
                     <form:checkbox path="checkid"  value="${formerstudent.id}"/>
                 </td>
                       
                          
-                                       <td width="90px">   <img width="100" src="<c:url value='/resources/image/${formerstudent.imageLink}'/>" alt="Photo of Youthful William" id="pic" />
+        <td width="90px">   <img width="80"height="60"  src="<c:url value='/resources/image/${formerstudent.imageLink}'/>" alt="Photo of Youthful William" id="pic" />
+       
          </td>
-                             <td align="center">
-                                <form:form method="POST"  action="sendEmailFormAdmin" commandName="studentsemailmodel" >
-                    <form:input path="id"   value="${formerstudent.id}" type="hidden"/>
-                    <input type="submit"  value="send email"/>
-                </form:form>
-         
                             
-                            </td>
+                             <td><a href="sendEmailFormAdmin/${formerstudent.id}">Send Email</a></td> 
+                                
+                            
+                           
                           </tr>
                              </c:forEach>
                           

@@ -103,7 +103,7 @@ return false;
   <div class="row">
 	<div class="col-sm-3">
       <!-- left -->
-       <a href="<c:url value="/admin"/>" target=""><i class="glyphicon glyphicon-home"></i>Home</a></h3>
+       <a href="<c:url value="/admin"/>" target=""><i class="glyphicon glyphicon-home"></i> Home</a></h3>
       <hr>
       
       <ul class="nav nav-stacked">
